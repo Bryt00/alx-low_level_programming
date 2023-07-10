@@ -1,58 +1,46 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#define UNUSED(x) (void)(x)
+
 /**
- * StringCheck - checks string
+ * isInteger - checks if s is an integer
  * @s: string to check
- * Return: boolean
+ * Return: 0 or 1
  */
-int StringCheck(char *s)
+
+int isInteger(const char *s)
 {
 	int i = 0;
 
-	for (; s[i] != '\0'; i++)
+	while (s[i] != '\0')
 	{
-		if (!isdigit(s[i]))
-		{
-			return (0);
-		}
+		if (s[i] < '0' || s[i] > '9')
+			return (1);
+		i++;
 	}
-	return (1);
+	return (0);
 }
+
 /**
- * main - main function
- * @argc: argumentc
- * @argv: vector of arguments
- *Return: always 0
+ * main - adds positive numbers
+ * @argc: int
+ * @argv: list
+ * Return: 0
  */
-int main(int argc, char  *argv[])
+
+int main(int argc, char const *argv[])
 {
-	int i;
-	int result = 0;
+	int sum = 0;
 
-	if (argc > 1)
+	while (--argc)
+
 	{
-		for (i = 1; i < argc; i++)
+		if (isInteger(argv[argc]))
 		{
-			if (StringCheck(argv[i]))
-			{
-				result += atoi(argv[i]);
-			}
-			else
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
-		printf("%d\n", result);
-		return (0);
+		sum += atoi(argv[argc]);
 	}
-	else
-	{
-		printf("%d\n", 0);
-		return (1);
-	}
-
-}}
+	printf("%i\n", sum);
+	return (0);
+}
