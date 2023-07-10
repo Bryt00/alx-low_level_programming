@@ -1,13 +1,16 @@
+#include "main.h"
 #include <stdio.h>
+#define UNUSED(x) (void)(x)
 /**
- * * main -  Prints number of arguements
- * * @argc: arguement count
- * * @argv: array of pointers to CLI arguement
- * * Return: 0
- * **/
-int main(int argc, char *argv[])
+ * main - main function
+ * @argc: argumentc
+ * @argv: vector of arguments
+ *Return: always 0
+ */
+int main(int argc, char  *argv[])
 {
-		*argv = *argv;
-			printf("%d\n", argc - 1);
-				return (0);
+	UNUSED(argv);
+	printf("%d\n", argc - 1);
+	return (0);
 }
+
